@@ -1,0 +1,20 @@
+.form_container {
+  display: grid;
+  justify-content: center;
+  row-gap: 48px;
+}
+
+.form_input {
+  display: grid;
+  grid-template-columns: 377px 133px;
+  column-gap: 12px;
+  justify-content: center;
+}
+
+.circles_container {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 16px;
+  justify-content: center;
+  margin-bottom: 30px;
+}

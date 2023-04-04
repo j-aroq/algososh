@@ -1,0 +1,34 @@
+.form_input {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 204px repeat(4, 1fr);
+  column-gap: 12px;
+  padding: 0 108px;
+}
+
+.form_input_index {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 204px repeat(2, 1fr);
+  column-gap: 12px;
+  padding: 0 108px;
+  margin-bottom: 120px;
+}
+
+.circles_container {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .circles_column {
+  display: grid;
+  column-gap: 16px;
+  justify-items: center;
+}
+
+.circle_margin {
+  margin: 8px 0 38px;
+} */
