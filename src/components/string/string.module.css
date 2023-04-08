@@ -1,4 +1,4 @@
-.form_input {
+.form_container {
   display: grid;
   grid-template-columns: 377px 133px;
   column-gap: 12px;
@@ -11,4 +11,6 @@
   grid-auto-flow: column;
   column-gap: 16px;
   justify-content: center;
+  padding: 0;
+  margin: 0;
 }

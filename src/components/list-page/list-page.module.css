@@ -21,14 +21,30 @@
   column-gap: 16px;
   justify-content: center;
   align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-/* .circles_column {
+.circles_column {
+  position: relative;
   display: grid;
+  grid-auto-flow: column;
   column-gap: 16px;
   justify-items: center;
+  align-items: center;
 }
 
-.circle_margin {
-  margin: 8px 0 38px;
-} */
+.circle_top {
+  position: absolute;
+  top: -60px;
+  left: 14px;
+  background-color: white;
+}
+
+.circle_bottom {
+  position: absolute;
+  top: 112px;
+  left: 14px;
+  background-color: white;
+}
