@@ -69,6 +69,7 @@ export const StringComponent: React.FC = () => {
           text="Развернуть"
           isLoader={isLoading}
           onClick={reverseString}
+          disabled={!inputValue}
         />
       </div>
       <ul className={styles.circles_container}>

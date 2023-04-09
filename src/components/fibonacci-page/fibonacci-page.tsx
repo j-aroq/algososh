@@ -49,6 +49,7 @@ export const FibonacciPage: React.FC = () => {
             text="Развернуть"
             onClick={() => getFibonacci(inputValue)}
             isLoader={isLoading}
+            disabled={!inputValue || Number(inputValue) > 19}
           />
         </div>
         <ul className={styles.circles_container}>

@@ -208,6 +208,7 @@ export const ListPage: React.FC = () => {
     for (let i = 0; i <= position; i++) {
       extraArr[i] = {
         ...extraArr[i],
+        state: ElementStates.Changing,
         extra_circle: {
           insertion: true,
           value: newElement!.value,
@@ -236,12 +237,14 @@ export const ListPage: React.FC = () => {
       },
     };
 
+    extraArr.map((item) => (item.state = ElementStates.Default));
     extraArr.splice(position, 0, {
       value: newElement!.value,
       state: ElementStates.Modified,
     });
     await setup(extraArr);
-    extraArr[position].state = ElementStates.Default;
+    await delay(SHORT_DELAY_IN_MS);
+    extraArr.map((item) => (item.state = ElementStates.Default));
     setInputValue("");
     setIsLoadingInsertion({ isLoadingInsertByIndex: false, isLoading: false });
   };
@@ -316,13 +319,13 @@ export const ListPage: React.FC = () => {
         <Button
           text="Удалить из head"
           onClick={removeHead}
-          disabled={disabled}
+          disabled={disabled || linkedList.getSize() === 0}
           isLoader={isLoadingRemoval.isLoadingRemoveHead}
         />
         <Button
           text="Удалить из tail"
           onClick={removeTail}
-          disabled={disabled}
+          disabled={disabled || linkedList.getSize() === 0}
           isLoader={isLoadingRemoval.isLoadingRemoveTail}
         />
       </div>
@@ -339,14 +342,20 @@ export const ListPage: React.FC = () => {
           text="Добавить по индексу"
           onClick={addByIndex}
           disabled={
-            !inputValue || !inputIndex || disabled || linkedList.getSize() === 6
+            !inputValue ||
+            !inputIndex ||
+            disabled ||
+            linkedList.getSize() === 6 ||
+            inputIndex >= linkedList.getSize()
           }
           isLoader={isLoadingInsertion?.isLoadingInsertByIndex}
         />
         <Button
           text="Удалить по индексу"
           onClick={removeFromIndex}
-          disabled={!inputIndex || disabled}
+          disabled={
+            !inputIndex || disabled || inputIndex >= linkedList.getSize()
+          }
           isLoader={isLoadingRemoval.isLoadingRemoveFromIndex}
         />
       </div>
