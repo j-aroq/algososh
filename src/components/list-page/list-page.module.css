@@ -1,0 +1,50 @@
+.form_input {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 204px repeat(4, 1fr);
+  column-gap: 12px;
+  padding: 0 108px;
+}
+
+.form_input_index {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 204px repeat(2, 1fr);
+  column-gap: 12px;
+  padding: 0 108px;
+  margin-bottom: 120px;
+}
+
+.circles_container {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.circles_column {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 16px;
+  justify-items: center;
+  align-items: center;
+}
+
+.circle_top {
+  position: absolute;
+  top: -60px;
+  left: 14px;
+  background-color: white;
+}
+
+.circle_bottom {
+  position: absolute;
+  top: 112px;
+  left: 14px;
+  background-color: white;
+}

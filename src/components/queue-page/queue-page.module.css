@@ -1,0 +1,13 @@
+.form_input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 52px;
+  padding: 0 169.5px;
+}
+
+.circles_container {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 16px;
+  justify-content: center;
+}

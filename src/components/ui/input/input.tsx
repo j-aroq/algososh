@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./input.module.css";
+import declOfNum from "../../../utils/number-declension";
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
   placeholder?: string;
@@ -18,7 +19,11 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   const limitText =
     type === "text"
-      ? `Максимум — ${maxLength} символа`
+      ? `Максимум — ${maxLength} ${declOfNum(maxLength, [
+          "символ",
+          "символа",
+          "символов",
+        ])}`
       : `Максимальное число — ${max}`;
 
   return (
