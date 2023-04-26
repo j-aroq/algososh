@@ -27,17 +27,17 @@ export const SortingPage: React.FC = () => {
     if (sortingMode === "selection") {
       selectionSorting(
         numbersArr,
+        "ascending",
         setNumbersArr,
-        setIsLoadingAscending,
-        "ascending"
+        setIsLoadingAscending
       );
     }
     if (sortingMode === "bubble") {
       bubbleSorting(
         numbersArr,
+        "ascending",
         setNumbersArr,
-        setIsLoadingAscending,
-        "ascending"
+        setIsLoadingAscending
       );
     }
   };
@@ -46,17 +46,17 @@ export const SortingPage: React.FC = () => {
     if (sortingMode === "selection") {
       selectionSorting(
         numbersArr,
+        "descending",
         setNumbersArr,
-        setIsLoadingDescending,
-        "descending"
+        setIsLoadingDescending
       );
     }
     if (sortingMode === "bubble") {
       bubbleSorting(
         numbersArr,
+        "descending",
         setNumbersArr,
-        setIsLoadingDescending,
-        "descending"
+        setIsLoadingDescending
       );
     }
   };
@@ -106,7 +106,11 @@ export const SortingPage: React.FC = () => {
         {!!numbersArr &&
           numbersArr.map((item, index) => {
             return (
-              <Column key={index} index={item.number} state={item.state} />
+              <Column
+                key={index}
+                index={item.number !== undefined ? item.number : 0}
+                state={item.state}
+              />
             );
           })}
       </div>
