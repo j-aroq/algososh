@@ -1,6 +1,6 @@
 describe("routing works correctly", function () {
   beforeEach(function () {
-    cy.visit("http://localhost:3000");
+    cy.visit("");
   });
 
   it("should open start page", function () {

@@ -1,3 +1,5 @@
+import { DIV_CIRCLES } from "../../src/constants/element-captions";
+
 describe("string page works correctly", function () {
   beforeEach(function () {
     cy.visit("/recursion");
@@ -12,7 +14,7 @@ describe("string page works correctly", function () {
     cy.get("input").type("ABCD").should("have.value", "ABCD");
     cy.contains("Развернуть").click();
     // first step
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("A")
         .attr("class")
@@ -33,7 +35,7 @@ describe("string page works correctly", function () {
 
     // second step
     cy.wait(500);
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("D")
         .attr("class")
@@ -54,7 +56,7 @@ describe("string page works correctly", function () {
 
     // second step
     cy.wait(500);
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("D")
         .attr("class")
@@ -75,7 +77,7 @@ describe("string page works correctly", function () {
 
     // last step
     cy.wait(500);
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("D")
         .attr("class")

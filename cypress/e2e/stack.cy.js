@@ -1,3 +1,8 @@
+import {
+  DIV_CIRCLES,
+  DIV_CIRCLE_HEAD,
+} from "../../src/constants/element-captions";
+
 describe("stack page works correctly", function () {
   beforeEach(function () {
     cy.visit("/stack");
@@ -11,18 +16,18 @@ describe("stack page works correctly", function () {
   it("should add element correctly", function () {
     cy.get("input").type("10").should("have.value", "10");
     cy.contains("Добавить").click();
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("10")
         .attr("class")
         .to.match(/circle_changing__/);
     });
-    cy.get('div[class*="circle_head"').should(($div) => {
+    cy.get(DIV_CIRCLE_HEAD).should(($div) => {
       expect($div.eq(0)).to.have.text("top");
     });
 
     cy.wait(1000);
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("10")
         .attr("class")
@@ -35,9 +40,9 @@ describe("stack page works correctly", function () {
     cy.contains("Добавить").click();
     cy.get("input").type("15").should("have.value", "15");
     cy.contains("Добавить").click();
-    cy.get('div[class^="circle_circle"').should("have.length", 2);
+    cy.get(DIV_CIRCLES).should("have.length", 2);
     cy.contains("Удалить").click();
-    cy.get('div[class^="circle_circle"').should("have.length", 1);
+    cy.get(DIV_CIRCLES).should("have.length", 1);
   });
 
   it("should clear stack correctly", function () {
@@ -48,6 +53,6 @@ describe("stack page works correctly", function () {
     cy.get("input").type("20").should("have.value", "20");
     cy.contains("Добавить").click();
     cy.contains("Очистить").click();
-    cy.get('div[class^="circle_circle"').should("have.length", 0);
+    cy.get(DIV_CIRCLES).should("have.length", 0);
   });
 });

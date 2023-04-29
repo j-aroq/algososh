@@ -1,3 +1,5 @@
+import { DIV_CIRCLES } from "../../src/constants/element-captions";
+
 describe("fibonacci page works correctly", function () {
   beforeEach(function () {
     cy.visit("/fibonacci");
@@ -12,7 +14,7 @@ describe("fibonacci page works correctly", function () {
     cy.get("input").type("6").should("have.value", "6");
     cy.contains("Развернуть").click();
     cy.wait(7000);
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0)).to.have.text("1");
       expect($div.eq(1)).to.have.text("1");
       expect($div.eq(2)).to.have.text("2");

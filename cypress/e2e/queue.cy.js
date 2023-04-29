@@ -1,3 +1,11 @@
+import {
+  HEAD,
+  TAIL,
+  DIV_CIRCLES,
+  DIV_CIRCLE_TAIL,
+  DIV_CIRCLE_HEAD,
+} from "../../src/constants/element-captions";
+
 describe("queue page works correctly", function () {
   beforeEach(function () {
     cy.visit("/queue");
@@ -11,21 +19,21 @@ describe("queue page works correctly", function () {
   it("should add element correctly", function () {
     cy.get("input").type("10").should("have.value", "10");
     cy.contains("Добавить").click();
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("10")
         .attr("class")
         .to.match(/circle_changing__/);
     });
-    cy.get('div[class*="circle_head"').should(($div) => {
-      expect($div.eq(0)).to.have.text("head");
+    cy.get(DIV_CIRCLE_HEAD).should(($div) => {
+      expect($div.eq(0)).to.have.text(HEAD);
     });
-    cy.get('div[class*="circle_tail"').should(($div) => {
-      expect($div.eq(0)).to.have.text("tail");
+    cy.get(DIV_CIRCLE_TAIL).should(($div) => {
+      expect($div.eq(0)).to.have.text(TAIL);
     });
 
     cy.wait(1000);
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("10")
         .attr("class")
@@ -34,7 +42,7 @@ describe("queue page works correctly", function () {
 
     cy.get("input").type("15").should("have.value", "15");
     cy.contains("Добавить").click();
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("10")
         .attr("class")
@@ -44,17 +52,17 @@ describe("queue page works correctly", function () {
         .attr("class")
         .to.match(/circle_changing__/);
     });
-    cy.get('div[class*="circle_head"').should(($div) => {
-      expect($div.eq(0)).to.have.text("head");
+    cy.get(DIV_CIRCLE_HEAD).should(($div) => {
+      expect($div.eq(0)).to.have.text(HEAD);
       expect($div.eq(1)).to.have.text("");
     });
-    cy.get('div[class*="circle_tail"').should(($div) => {
+    cy.get(DIV_CIRCLE_TAIL).should(($div) => {
       expect($div.eq(0)).to.have.text("");
-      expect($div.eq(1)).to.have.text("tail");
+      expect($div.eq(1)).to.have.text(TAIL);
     });
 
     cy.wait(1000);
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0))
         .to.have.text("10")
         .attr("class")
@@ -74,18 +82,18 @@ describe("queue page works correctly", function () {
     cy.get("input").type("20").should("have.value", "20");
     cy.contains("Добавить").click();
     cy.contains("Удалить").click();
-    cy.get('div[class^="circle_circle"').should(($div) => {
+    cy.get(DIV_CIRCLES).should(($div) => {
       expect($div.eq(0)).to.have.text("");
       expect($div.eq(1)).to.have.text("15");
       expect($div.eq(2)).to.have.text("20");
     });
-    cy.get('div[class*="circle_head"').should(($div) => {
-      expect($div.eq(1)).to.have.text("head");
+    cy.get(DIV_CIRCLE_HEAD).should(($div) => {
+      expect($div.eq(1)).to.have.text(HEAD);
       expect($div.eq(2)).to.have.text("");
     });
-    cy.get('div[class*="circle_tail"').should(($div) => {
+    cy.get(DIV_CIRCLE_TAIL).should(($div) => {
       expect($div.eq(1)).to.have.text("");
-      expect($div.eq(2)).to.have.text("tail");
+      expect($div.eq(2)).to.have.text(TAIL);
     });
   });
 
@@ -97,7 +105,7 @@ describe("queue page works correctly", function () {
     cy.get("input").type("20").should("have.value", "20");
     cy.contains("Добавить").click();
     cy.contains("Очистить").click();
-    cy.get('div[class^="circle_circle"').each(($div) => {
+    cy.get(DIV_CIRCLES).each(($div) => {
       expect($div).to.have.text("");
     });
   });

@@ -9,6 +9,7 @@ import { ElementStates } from "../../types/element-states";
 import { Queue } from "./queue";
 import { TCircle } from "../../types/circle";
 import { delay } from "../../utils/time-delay";
+import { HEAD, TAIL } from "../../constants/element-captions";
 
 export const QueuePage: React.FC = () => {
   const [inputValue, setInputValue] = React.useState<string>("");
@@ -44,10 +45,10 @@ export const QueuePage: React.FC = () => {
     queue.enqueue(inputValue);
     const head = queue.getHead();
     const tail = queue.getTail();
-    extraArr[head.index] = { value: head.value, head: "head" };
+    extraArr[head.index] = { value: head.value, head: HEAD };
     setHeadIndex(head.index);
     if (tail.index > 0) extraArr[tail.index - 1].tail = "";
-    extraArr[tail.index].tail = "tail";
+    extraArr[tail.index].tail = TAIL;
     extraArr[tail.index].value = tail.value;
     extraArr[tail.index].state = ElementStates.Changing;
 
@@ -72,7 +73,7 @@ export const QueuePage: React.FC = () => {
       if (head.index > 0) {
         extraArr[head.index - 1] = { value: "", head: "" };
       }
-      extraArr[head.index].head = "head";
+      extraArr[head.index].head = HEAD;
       extraArr[head.index].value = head.value;
       extraArr[head.index].state = ElementStates.Changing;
 

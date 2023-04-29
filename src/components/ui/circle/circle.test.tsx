@@ -1,6 +1,7 @@
 import renderer from "react-test-renderer";
 import { Circle } from "./circle";
 import { ElementStates } from "../../../types/element-states";
+import { HEAD, TAIL } from "../../../constants/element-captions";
 
 const circleLetter = "A";
 
@@ -17,7 +18,7 @@ describe("Circle component", () => {
 
   it("Should render circle with head", () => {
     const tree = renderer
-      .create(<Circle letter={circleLetter} head="head" />)
+      .create(<Circle letter={circleLetter} head={HEAD} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -31,7 +32,7 @@ describe("Circle component", () => {
 
   it("Should render circle with tail", () => {
     const tree = renderer
-      .create(<Circle letter={circleLetter} tail="tail" />)
+      .create(<Circle letter={circleLetter} tail={TAIL} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
