@@ -7,33 +7,36 @@ import { swap } from "../utils/swap";
 
 export const bubbleSorting = async (
   arr: TColumn[],
-  setNumbersArr: React.Dispatch<React.SetStateAction<TColumn[]>>,
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-  mode: "ascending" | "descending"
+  mode: "ascending" | "descending",
+  setNumbersArr?: React.Dispatch<React.SetStateAction<TColumn[]>>,
+  setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const { length } = arr;
   const extraArr: TColumn[] = arr;
-  setIsLoading(true);
+  if (setIsLoading) setIsLoading(true);
   for (let i = 0; i < length; i++) {
     for (let j = 0; j < length - i - 1; j++) {
       extraArr[j].state = ElementStates.Changing;
       extraArr[j + 1].state = ElementStates.Changing;
-      setNumbersArr([...extraArr]);
-      await delay(SHORT_DELAY_IN_MS);
-
+      if (setNumbersArr) {
+        setNumbersArr([...extraArr]);
+        await delay(SHORT_DELAY_IN_MS);
+      }
       let toBeSorted;
       if (mode === "descending") {
-        toBeSorted = extraArr[j].number < extraArr[j + 1].number;
+        toBeSorted = extraArr[j].number! < extraArr[j + 1].number!;
       }
       if (mode === "ascending") {
-        toBeSorted = extraArr[j].number > extraArr[j + 1].number;
+        toBeSorted = extraArr[j].number! > extraArr[j + 1].number!;
       }
       if (toBeSorted) {
         extraArr[j].state = ElementStates.Changing;
         extraArr[j + 1].state = ElementStates.Changing;
         swap(extraArr, j, j + 1);
-        setNumbersArr([...extraArr]);
-        await delay(SHORT_DELAY_IN_MS);
+        if (setNumbersArr) {
+          setNumbersArr([...extraArr]);
+          await delay(SHORT_DELAY_IN_MS);
+        }
       }
 
       extraArr[j].state = ElementStates.Default;
@@ -43,11 +46,17 @@ export const bubbleSorting = async (
         extraArr[j + 1].state = ElementStates.Modified;
       }
 
-      setNumbersArr([...extraArr]);
-      await delay(SHORT_DELAY_IN_MS);
+      if (setNumbersArr) {
+        setNumbersArr([...extraArr]);
+        await delay(SHORT_DELAY_IN_MS);
+      }
     }
   }
   extraArr[0].state = ElementStates.Modified;
-  setNumbersArr([...extraArr]);
-  setIsLoading(false);
+  if (setNumbersArr) {
+    setNumbersArr([...extraArr]);
+  } else {
+    return [...extraArr];
+  }
+  if (setIsLoading) setIsLoading(false);
 };

@@ -14,6 +14,7 @@ import {
   TIsLoadingInsertion,
   TIsLoadingRemoval,
 } from "../../types/is-loading-actions";
+import { HEAD, TAIL } from "../../constants/element-captions";
 
 export const ListPage: React.FC = () => {
   const size: number = 4;
@@ -367,8 +368,8 @@ export const ListPage: React.FC = () => {
                 state={item.state}
                 letter={typeof item.value === "string" ? item.value : ""}
                 index={index}
-                head={index === 0 ? "head" : ""}
-                tail={index === circleArr.length - 1 ? "tail" : ""}
+                head={index === 0 ? HEAD : ""}
+                tail={index === circleArr.length - 1 ? TAIL : ""}
                 extraClass={styles.circle}
               />
               {circleArr.length > index + 1 && <ArrowIcon />}
