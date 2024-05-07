@@ -1,3 +1,11 @@
+# Project work. MBOU ALGOSOSH named after Fibonacci
+
+The project work implements a visualizer of algorithms. This project work is sharpened on animation and step-by-step display of algorithms work.
+The code is covered by unit and e2e tests using Jest and Cypress.
+
+[Project Design.](https://www.figma.com/file/RIkypcTQN5d37g7RRTFid0/Algososh_external_link?node-id=0%3A1) 
+
+
 # Проектная работа. МБОУ АЛГОСОШ им. Фибоначчи
 
 В проектной работе реализован визуализатор алгоритмов. Эта проектная работа заточена на анимацию и поэтапное отображение работы алгоритмов.
